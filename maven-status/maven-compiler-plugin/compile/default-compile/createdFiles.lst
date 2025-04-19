@@ -1,0 +1,10 @@
+com/alienworkspace/cdr/model/dto/person/PersonAddressDto.class
+com/alienworkspace/cdr/model/dto/person/PersonNameDto$PersonNameDtoBuilder.class
+com/alienworkspace/cdr/model/dto/person/PersonAttributeTypeDto$PersonAttributeTypeDtoBuilder.class
+com/alienworkspace/cdr/model/dto/person/PersonAddressDto$PersonAddressDtoBuilder.class
+com/alienworkspace/cdr/model/dto/person/PersonAttributeTypeDto.class
+com/alienworkspace/cdr/model/dto/person/PersonDto$PersonDtoBuilder.class
+com/alienworkspace/cdr/model/dto/person/PersonNameDto.class
+com/alienworkspace/cdr/model/dto/person/PersonAttributeDto.class
+com/alienworkspace/cdr/model/dto/person/PersonDto.class
+com/alienworkspace/cdr/model/dto/person/PersonAttributeDto$PersonAttributeDtoBuilder.class
