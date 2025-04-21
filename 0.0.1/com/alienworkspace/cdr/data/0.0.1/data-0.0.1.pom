@@ -34,8 +34,9 @@
     <distributionManagement>
         <repository>
             <id>internal.repo</id>
-            <name>Temporary Staging Repository</name>
-            <url>file://${project.build.directory}/${version}</url>
+            <name>Staging Repository</name>
+            <url>https://github.com/enumahin/data</url>
+<!--            <url>file://${project.build.directory}/${version}</url>-->
         </repository>
     </distributionManagement>
     <build>
