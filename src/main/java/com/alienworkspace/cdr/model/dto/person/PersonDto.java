@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Builder
 public class PersonDto {
 
-    private int personId;
+    private long personId;
 
     private Character gender;
 
