@@ -35,7 +35,7 @@ jobs:
               <server>
                 <id>github</id>
                 <username>${{ secrets.GITHUB_ACTOR }}</username>
-                <password>${{ secrets.GITHUB_TOKEN }}</password>
+                <password>${{ secrets.Data-Repository-Access-Token }}</password>
               </server>
             </servers>
           </settings>
