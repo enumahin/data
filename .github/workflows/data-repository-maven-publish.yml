@@ -34,8 +34,8 @@ jobs:
             <servers>
               <server>
                 <id>github</id>
-                <username>${{ secrets.GITHUB_ACTOR }}</username>
-                <password>${{ secrets.Data-Repository-Access-Token }}</password>
+                <username>enumahin</username>
+                <password>${{ secrets.GH_PAT }}</password>
               </server>
             </servers>
           </settings>
