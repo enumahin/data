@@ -34,8 +34,9 @@
     <distributionManagement>
         <repository>
             <id>internal.repo</id>
-            <name>Temporary Staging Repository</name>
-            <url>file://${project.build.directory}/${version}</url>
+            <name>Staging Repository</name>
+            <url>https://github.com/enumahin/data</url>
+<!--            <url>file://${project.build.directory}/${version}</url>-->
         </repository>
     </distributionManagement>
     <build>
@@ -106,4 +107,31 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>skip-site</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.github</groupId>
+                        <artifactId>site-maven-plugin</artifactId>
+                        <version>0.12</version>
+                        <executions>
+                            <execution>
+                                <id>default</id>
+                                <phase>site</phase>
+                                <goals>
+                                    <goal>site</goal>
+                                </goals>
+                                <configuration>
+                                    <skip>true</skip>
+                                    <message/>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
