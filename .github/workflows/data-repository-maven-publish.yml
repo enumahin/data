@@ -42,4 +42,4 @@ jobs:
           EOF
 
     - name: Build and deploy
-      run: mvn deploy -DskipTests -Dsite.skip=true
+      run: mvn deploy -DskipTests -Pskip-site
