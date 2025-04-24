@@ -4,6 +4,8 @@ import lombok.*;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class PersonAttributeTypeDto {
     private int personAttributeTypeId;
     private String name;

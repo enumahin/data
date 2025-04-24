@@ -7,6 +7,8 @@ import java.time.LocalDate;
 @Builder
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class PersonAddressDto{
 
     private long personAddressId;
