@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.alienworkspace.cdr</groupId>
     <artifactId>data</artifactId>
-    <version>0.0.1</version>
+    <version>1.0.0</version>
     <name>data</name>
     <description>data</description>
     <packaging>jar</packaging>
@@ -17,6 +17,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.24</version>
             <optional>true</optional>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>33.4.8-jre</version>
         </dependency>
         <!-- Spring Boot Starter Validation -->
         <dependency>
@@ -34,6 +40,11 @@
             <artifactId>springdoc-openapi-starter-common</artifactId>
             <version>2.8.5</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -47,24 +58,11 @@
         </dependencies>
     </dependencyManagement>
 
-    <!--
-     Create a settings.xml file in .m2 directory with the following content:
-    <settings>
-        <servers>
-            <server>
-                <id>github</id>
-                <password>GitHub-Personal-Access-Token</password>
-            </server>
-         </servers>
-    </settings>
-     -->
-    <!-- Add the local repo definition to our pom.xml: -->
     <distributionManagement>
         <repository>
             <id>internal.repo</id>
             <name>Staging Repository</name>
             <url>https://github.com/enumahin/data</url>
-<!--            <url>file://${project.build.directory}/${version}</url>-->
         </repository>
     </distributionManagement>
     <build>
@@ -82,7 +80,6 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-            <!-- let’s add the maven-deploy-plugin configuration to our pom.xml. We’ll use this plugin to add our artifact(s) to a local repository in the directory ${project.build.directory}/mvn-artifact: -->
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.8.2</version>
@@ -92,7 +89,6 @@
                     </altDeploymentRepository>
                 </configuration>
             </plugin>
-            <!-- Also, if we want to push the source files with Maven artifacts to GitHub, then we need to include the source plugin as well -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>

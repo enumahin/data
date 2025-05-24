@@ -16,16 +16,6 @@ import lombok.*;
 public class RecordVoidRequest {
 
     @Schema(
-            description = "UUID of the record to be deleted."
-    )
-    private String resourceUUID;
-
-    @Schema(
-            description = "ID of the record to be deleted"
-    )
-    private String resourceId;
-
-    @Schema(
             description = "Reason for the deletion"
     )
     @NotNull(message = "Deletion reason must be provided")

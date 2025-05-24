@@ -2,6 +2,7 @@ package com.alienworkspace.cdr.model.helper;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -12,6 +13,7 @@ import lombok.Data;
         description = "POJO for API call responses."
 )
 @Data
+@Builder
 @AllArgsConstructor
 public class ResponseDto {
 

@@ -42,5 +42,5 @@ public class PersonNameDto extends AuditTrail {
     @Schema(
             description = "Is this the preferred name?"
     )
-    private boolean preferred;
+    private Boolean preferred;
 }
