@@ -57,7 +57,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <distributionManagement>
         <repository>
             <id>internal.repo</id>
