@@ -37,6 +37,11 @@ public class ErrorResponseDto {
     private String errorMessage;
 
     @Schema(
+            description = "Exception Class"
+    )
+    private String exceptionClass;
+
+    @Schema(
             description = "Time the Exception was raised"
     )
     private LocalDateTime errorTime;

@@ -22,36 +22,43 @@ public class PatientIdentifierTypeDto extends AuditTrail {
             example = "1"
     )
     private Integer patientIdentifierTypeId;
+
     @Schema(
             description = "Patient Identifier Type Name",
             example = "National ID"
     )
     private String name;
+
     @Schema(
             description = "Patient Identifier Type Description",
             example = "National ID"
     )
     private String description;
+
     @Schema(
             description = "Patient Identifier Type Format",
             example = "Number"
     )
     private String format;
+
     @Schema(
             description = "Patient Identifier Type Required",
             example = "true"
     )
     private boolean required;
+
     @Schema(
             description = "Patient Identifier Type Unique",
             example = "true"
     )
     private boolean unique;
+
     @Schema(
             description = "Patient Identifier Type Hint",
             example = "Alpha Numeric Characters Only"
     )
     private String formatHint;
+
     @Schema(
             description = "Patient Identifier Type Validator",
             example = "National ID Validator"
