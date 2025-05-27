@@ -19,7 +19,7 @@ public class PatientIdentifier extends AuditTrail {
             description = "Patient Identifier Id",
             example = "1"
     )
-    private Integer patientIdentifierId;
+    private Long patientIdentifierId;
     @Schema(
             description = "Patient Id",
             example = "1"
@@ -29,7 +29,7 @@ public class PatientIdentifier extends AuditTrail {
             description = "Patient Identifier Type Id",
             example = "1"
     )
-    private long identifierTypeId;
+    private int identifierTypeId;
     @Schema(
             description = "Patient Identifier",
             example = "123456789"
