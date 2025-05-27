@@ -57,7 +57,7 @@ public class PatientProgramDto {
             description = "Outcome Concept Id",
             example = "1"
     )
-    private Long outcomeConceptId;
+    private Integer outcomeConceptId;
 
     @Schema(
             description = "Outcome Comment",

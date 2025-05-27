@@ -42,7 +42,7 @@ public class PatientCompletePreferredDto extends AuditTrail {
 
     private PersonNameDto preferredName;
 
-    private List<PatientIdentifier> patientIdentifiers = new ArrayList<>();
+    private List<PatientIdentifierDto> patientIdentifierDtos = new ArrayList<>();
 
     private List<PatientProgramDto> patientPrograms = new ArrayList<>();
 

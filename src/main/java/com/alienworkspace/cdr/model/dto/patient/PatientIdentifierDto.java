@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Schema(
         name = "PatientIdentifierDto",
         description = "Patient Identifier Dto")
-public class PatientIdentifier extends AuditTrail {
+public class PatientIdentifierDto extends AuditTrail {
     @Schema(
             description = "Patient Identifier Id",
             example = "1"

@@ -42,7 +42,7 @@ public class PatientCompleteDto extends AuditTrail {
 
     private List<PersonNameDto> names = new ArrayList<>();
 
-    private List<PatientIdentifier> patientIdentifiers = new ArrayList<>();
+    private List<PatientIdentifierDto> patientIdentifierDtos = new ArrayList<>();
 
     private List<PatientProgramDto> patientPrograms = new ArrayList<>();
 
