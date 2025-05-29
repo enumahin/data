@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Data
@@ -53,5 +54,11 @@ public class PersonDto extends AuditTrail {
             example = "2020-12-31"
     )
     private String causeOfDeath;
+
+    private PersonNameDto name;
+
+    private PersonAddressDto address;
+
+    private List<PersonAttributeDto> attributes;
 
 }
