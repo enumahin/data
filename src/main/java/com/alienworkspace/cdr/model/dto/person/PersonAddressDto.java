@@ -1,5 +1,6 @@
 package com.alienworkspace.cdr.model.dto.person;
 
+import com.alienworkspace.cdr.model.dto.metadata.*;
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
@@ -32,25 +33,31 @@ public class PersonAddressDto extends AuditTrail {
             description = "Country of the Address"
     )
     @NotNull(message = "Country must be provided.")
-    private int country;
+    private CountryDto country;
 
     @Schema(
             description = "State of the Address"
     )
     @NotNull(message = "State must be provided.")
-    private int state;
+    private StateDto state;
 
     @Schema(
             description = "LGA/County of the Address"
     )
     @NotNull(message = "LGA/County must be provided.")
-    private int lga;
+    private CountyDto county;
 
     @Schema(
             description = "City/Town of the Address"
     )
     @NotNull(message = "City/Town must be provided.")
-    private int city;
+    private CityDto city;
+
+    @Schema(
+            description = "Community/Village of the Address"
+    )
+    @NotNull(message = "Community/Village must be provided.")
+    private CommunityDto community;
 
     @Schema(
             description = "PostCode of the Address"

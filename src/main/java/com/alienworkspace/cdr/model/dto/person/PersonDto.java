@@ -55,9 +55,9 @@ public class PersonDto extends AuditTrail {
     )
     private String causeOfDeath;
 
-    private PersonNameDto name;
+    private List<PersonNameDto> name;
 
-    private PersonAddressDto address;
+    private List<PersonAddressDto> address;
 
     private List<PersonAttributeDto> attributes;
 
