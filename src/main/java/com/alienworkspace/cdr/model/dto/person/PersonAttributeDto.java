@@ -32,7 +32,7 @@ public class PersonAttributeDto extends AuditTrail {
             description = "The Attribute's Id"
     )
     @NotNull(message = "Attribute ID must be provided.")
-    private PersonAttributeTypeDto personAttributeTypeId;
+    private PersonAttributeTypeDto personAttributeType;
 
     @Schema(
             description = "Value of the Attribute"
