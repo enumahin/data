@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -55,10 +56,10 @@ public class PersonDto extends AuditTrail {
     )
     private String causeOfDeath;
 
-    private List<PersonNameDto> name;
+    private List<PersonNameDto> name = new ArrayList<>();
 
-    private List<PersonAddressDto> address;
+    private List<PersonAddressDto> address = new ArrayList<>();
 
-    private List<PersonAttributeDto> attributes;
+    private List<PersonAttributeDto> attributes = new ArrayList<>();
 
 }
