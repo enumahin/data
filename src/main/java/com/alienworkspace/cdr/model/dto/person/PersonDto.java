@@ -56,10 +56,13 @@ public class PersonDto extends AuditTrail {
     )
     private String causeOfDeath;
 
+    @Builder.Default
     private List<PersonNameDto> name = new ArrayList<>();
 
+    @Builder.Default
     private List<PersonAddressDto> address = new ArrayList<>();
 
+    @Builder.Default
     private List<PersonAttributeDto> attributes = new ArrayList<>();
 
 }
