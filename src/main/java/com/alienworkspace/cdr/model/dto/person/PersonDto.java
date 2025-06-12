@@ -1,6 +1,7 @@
 package com.alienworkspace.cdr.model.dto.person;
 
 import com.alienworkspace.cdr.model.helper.AuditTrail;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -19,6 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Schema(name = "PersonDto", description = "Person Data Transfer Object")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PersonDto extends AuditTrail {
 
     private Long personId;
