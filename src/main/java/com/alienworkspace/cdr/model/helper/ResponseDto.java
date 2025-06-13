@@ -42,4 +42,6 @@ public class ResponseDto {
     public int hashCode() {
         return Objects.hash(getStatusCode(), getStatusMessage());
     }
+
+
 }
