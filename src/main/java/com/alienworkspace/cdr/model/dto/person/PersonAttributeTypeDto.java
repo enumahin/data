@@ -60,7 +60,7 @@ public class PersonAttributeTypeDto extends AuditTrail {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getPersonAttributeTypeId(), getName(), getDescription(), getFormat(),
+        return Objects.hash(getPersonAttributeTypeId(), getName(), getDescription(), getFormat(),
                 getCreatedAt(), getCreatedBy(), getLastModifiedAt(), getLastModifiedBy(), getVoided(), getVoidedAt(),
                 getVoidedBy(), getVoidReason());
     }

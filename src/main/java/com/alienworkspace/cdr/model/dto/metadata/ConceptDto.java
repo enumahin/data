@@ -47,7 +47,7 @@ public class ConceptDto extends AuditTrail {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getConceptId(), getShortName(), getDescription(), getVersion(),
+        return Objects.hash(getConceptId(), getShortName(), getDescription(), getVersion(),
                 getCreatedAt(), getCreatedBy(), getLastModifiedAt(), getLastModifiedBy(), getVoided(), getVoidedAt(),
                 getVoidedBy(), getVoidReason());
     }

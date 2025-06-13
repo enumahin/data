@@ -6,6 +6,8 @@ import java.util.Objects;
 import java.util.Set;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +24,8 @@ public class CountyDto extends AuditTrail {
     private Integer countyId;
 
     @Schema(description = "County Name", example = "Santa Clara")
+    @NotNull(message = "County Name cannot be null")
+    @Size(min = 2, max = 50, message = "County Name must be between 2 and 50 characters")
     private String countyName;
 
     @Schema(description = "County Locale", example = "en")
@@ -31,6 +35,8 @@ public class CountyDto extends AuditTrail {
     private boolean localePreferred;
 
     @Schema(description = "County Code", example = "CA")
+    @NotNull(message = "County Code cannot be null")
+    @Size(min = 2, max = 2, message = "County Code must be 2 characters")
     private String countyCode;
 
     @Schema(description = "County Geo Code", example = "CA")
@@ -40,6 +46,7 @@ public class CountyDto extends AuditTrail {
     private Integer countyPhoneCode;
 
     @Schema(description = "State")
+    @NotNull(message = "State cannot be null")
     private StateDto state;
 
     @Schema(description = "Cities", example = "[]")
@@ -72,7 +79,7 @@ public class CountyDto extends AuditTrail {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getCountyId(), getCountyName(), getLocale(), isLocalePreferred(),
+        return Objects.hash(getCountyId(), getCountyName(), getLocale(), isLocalePreferred(),
                 getCountyCode(), getCountyGeoCode(), getCountyPhoneCode(), getState(), getCities(), getCreatedAt(),
                 getCreatedBy(), getLastModifiedAt(), getLastModifiedBy(), getVoided(), getVoidedAt(), getVoidedBy(),
                 getVoidReason());

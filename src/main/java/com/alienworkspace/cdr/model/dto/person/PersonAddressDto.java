@@ -144,7 +144,7 @@ public class PersonAddressDto extends AuditTrail {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getPersonAddressId(), getPersonId(), isPreferred(), getCountry(),
+        return Objects.hash(getPersonAddressId(), getPersonId(), isPreferred(), getCountry(),
                 getState(), getCounty(), getCity(), getCommunity(), getPostalCode(), getAddressLine1(),
                 getAddressLine2(), getAddressLine3(), getLandmark(), getLongitude(), getLatitude(), getStartDate(),
                 getEndDate(), getCreatedAt(), getCreatedBy(), getLastModifiedAt(), getLastModifiedBy(), getVoided(),

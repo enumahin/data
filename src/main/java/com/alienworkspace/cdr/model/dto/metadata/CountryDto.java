@@ -6,6 +6,8 @@ import java.util.Objects;
 import java.util.Set;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,12 +24,18 @@ public class CountryDto extends AuditTrail {
     private Integer countryId;
 
     @Schema(description = "Country Code", example = "US")
+    @NotNull(message = "Country Code cannot be null")
+    @Size(min = 2, max = 2, message = "Country Code must be 2 characters")
     private String countryCode;
 
     @Schema(description = "Country Name", example = "United States of America")
+    @NotNull(message = "Country Name cannot be null")
+    @Size(min = 2, max = 50, message = "Country Name must be between 2 and 50 characters")
     private String countryName;
 
     @Schema(description = "Country Phone Code", example = "1")
+    @NotNull(message = "Country Phone Code cannot be null")
+    @Size(min = 1, max = 3, message = "Country Phone Code must be between 1 and 3 characters")
     private Integer countryPhoneCode;
 
     @Schema(description = "Country Geo Code", example = "US")
@@ -47,9 +55,6 @@ public class CountryDto extends AuditTrail {
 
     @Schema(description = "Is the country preferred?", example = "true/false")
     private boolean localePreferred;
-    @Builder.Default
-    @Schema(description = "State List", example = "[]")
-    private Set<CityDto> cities = new HashSet<>();
 
     @Builder.Default
     @Schema(description = "State List", example = "[]")
@@ -70,7 +75,6 @@ public class CountryDto extends AuditTrail {
                 && Objects.equals(getCurrencyCode(), that.getCurrencyCode())
                 && Objects.equals(getCurrencySymbol(), that.getCurrencySymbol())
                 && Objects.equals(getCurrencyName(), that.getCurrencyName())
-                && Objects.equals(getCities(), that.getCities())
                 && Objects.equals(getStates(), that.getStates())
                 && Objects.equals(getCreatedAt(), that.getCreatedAt())
                 && Objects.equals(getCreatedBy(), that.getCreatedBy())
@@ -84,9 +88,9 @@ public class CountryDto extends AuditTrail {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getCountryId(), getCountryCode(), getCountryName(), getCountryPhoneCode(),
+        return Objects.hash(getCountryId(), getCountryCode(), getCountryName(), getCountryPhoneCode(),
                 getCountryGeoCode(), getLocale(), getCurrencyCode(), getCurrencySymbol(), getCurrencyName(),
-                isLocalePreferred(), getCities(), getStates(), getCreatedAt(), getCreatedBy(), getLastModifiedAt(),
+                isLocalePreferred(), getStates(), getCreatedAt(), getCreatedBy(), getLastModifiedAt(),
                 getLastModifiedBy(), getVoided(), getVoidedAt(), getVoidedBy(), getVoidReason());
     }
 }

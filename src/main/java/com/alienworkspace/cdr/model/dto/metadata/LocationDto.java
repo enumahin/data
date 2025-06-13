@@ -2,6 +2,8 @@ package com.alienworkspace.cdr.model.dto.metadata;
 
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +22,8 @@ public class LocationDto extends AuditTrail {
     private Integer locationId;
 
     @Schema(description = "Location Name", example = "Nairobi")
+    @NotNull(message = "Location Name cannot be null")
+    @Size(min = 1, max = 100, message = "Location Name must be between 1 and 100 characters")
     private String locationName;
 
     @Schema(description = "Location Locale", example = "en")
@@ -29,6 +33,8 @@ public class LocationDto extends AuditTrail {
     private boolean localePreferred;
 
     @Schema(description = "Location Code", example = "KE")
+    @NotNull(message = "Location Code cannot be null")
+    @Size(min = 1, max = 20, message = "Location Code must be between 1 and 20 characters")
     private String locationCode;
 
     @Schema(description = "Location Geo Code", example = "US")
@@ -38,6 +44,7 @@ public class LocationDto extends AuditTrail {
     private Integer locationPhoneCode;
 
     @Schema(description = "Community")
+    @NotNull(message = "Community cannot be null")
     private CommunityDto community;
 
     @Override
@@ -65,7 +72,7 @@ public class LocationDto extends AuditTrail {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getLocationId(), getLocationName(), getLocale(), isLocalePreferred(),
+        return Objects.hash(getLocationId(), getLocationName(), getLocale(), isLocalePreferred(),
                 getLocationCode(), getLocationGeoCode(), getLocationPhoneCode(), getCommunity(), getCreatedAt(),
                 getCreatedBy(), getLastModifiedAt(), getLastModifiedBy(), getVoided(), getVoidedAt(), getVoidedBy(),
                 getVoidReason());

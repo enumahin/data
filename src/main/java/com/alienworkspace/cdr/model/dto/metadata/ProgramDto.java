@@ -2,6 +2,8 @@ package com.alienworkspace.cdr.model.dto.metadata;
 
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.Objects;
@@ -22,11 +24,15 @@ public class ProgramDto extends AuditTrail {
             example = "1"
     )
     private Integer programId;
+
     @Schema(
             description = "Patient Program Type Name",
             example = "HIV Care Program"
     )
+    @NotNull(message = "Name is required")
+    @Size(min = 3, max = 100, message = "Name must be between 3 and 100 characters")
     private String name;
+
     @Schema(
             description = "Patient Program Type Description",
             example = "HIV Testing and Treatment Program"
@@ -60,7 +66,7 @@ public class ProgramDto extends AuditTrail {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getProgramId(), getName(), getDescription(), isActive(), getCreatedAt(),
+        return Objects.hash(getProgramId(), getName(), getDescription(), isActive(), getCreatedAt(),
                 getCreatedBy(), getLastModifiedAt(), getLastModifiedBy(), getVoided(), getVoidedAt(), getVoidedBy(),
                 getVoidReason());
     }

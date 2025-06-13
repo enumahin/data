@@ -90,7 +90,7 @@ public class PatientIdentifierTypeDto extends AuditTrail {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getPatientIdentifierTypeId(), getName(), getDescription(), getFormat(),
+        return Objects.hash(getPatientIdentifierTypeId(), getName(), getDescription(), getFormat(),
                 isRequired(), isUnique(), getFormatHint(), getValidator(), getCreatedAt(), getCreatedBy(),
                 getLastModifiedAt(), getLastModifiedBy(), getVoided(), getVoidedAt(), getVoidedBy(), getVoidReason());
     }

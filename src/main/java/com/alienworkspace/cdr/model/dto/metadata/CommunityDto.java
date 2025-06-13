@@ -2,6 +2,8 @@ package com.alienworkspace.cdr.model.dto.metadata;
 
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,6 +23,8 @@ public class CommunityDto extends AuditTrail {
     private Integer communityId;
 
     @Schema(description = "Community Name", example = "Santa Clara")
+    @NotNull(message = "Community Name cannot be null")
+    @Size(min = 3, max = 100, message = "Community Name must be between 3 and 100 characters")
     private String communityName;
 
     @Schema(description = "Community Locale", example = "en")
@@ -30,6 +34,8 @@ public class CommunityDto extends AuditTrail {
     private boolean localePreferred;
 
     @Schema(description = "Community Code", example = "CA")
+    @NotNull(message = "Community Code cannot be null")
+    @Size(min = 2, max = 10, message = "Community Code must be between 2 and 10 characters")
     private String communityCode;
 
     @Schema(description = "Community Geo Code", example = "CA")
@@ -38,13 +44,8 @@ public class CommunityDto extends AuditTrail {
     @Schema(description = "Community Phone Code", example = "1")
     private Integer communityPhoneCode;
 
-    @Schema(description = "State")
-    private StateDto state;
-
-    @Schema(description = "County")
-    private CountyDto county;
-
     @Schema(description = "City")
+    @NotNull(message = "City cannot be null")
     private CityDto city;
 
     @Schema(description = "Locations")
@@ -63,8 +64,6 @@ public class CommunityDto extends AuditTrail {
                 && Objects.equals(getCommunityCode(), that.getCommunityCode())
                 && Objects.equals(getCommunityGeoCode(), that.getCommunityGeoCode())
                 && Objects.equals(getCommunityPhoneCode(), that.getCommunityPhoneCode())
-                && Objects.equals(getState(), that.getState())
-                && Objects.equals(getCounty(), that.getCounty())
                 && Objects.equals(getCity(), that.getCity())
                 && Objects.equals(getLocations(), that.getLocations())
                 && Objects.equals(getCreatedAt(), that.getCreatedAt())
@@ -79,8 +78,8 @@ public class CommunityDto extends AuditTrail {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getCommunityId(), getCommunityName(), getLocale(), isLocalePreferred(),
-                getCommunityCode(), getCommunityGeoCode(), getCommunityPhoneCode(), getState(), getCounty(), getCity(),
+        return Objects.hash(getCommunityId(), getCommunityName(), getLocale(), isLocalePreferred(),
+                getCommunityCode(), getCommunityGeoCode(), getCommunityPhoneCode(), getCity(),
                 getLocations());
     }
 }

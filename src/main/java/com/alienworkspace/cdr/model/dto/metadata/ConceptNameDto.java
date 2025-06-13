@@ -2,6 +2,8 @@ package com.alienworkspace.cdr.model.dto.metadata;
 
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.Objects;
@@ -21,9 +23,13 @@ public class ConceptNameDto extends AuditTrail {
     private Long conceptId;
 
     @Schema(description = "Concept Name", example = "English")
+    @NotNull(message = "Concept Name cannot be null")
+    @Size(min = 3, max = 100, message = "Concept Name must be between 3 and 100 characters")
     private String conceptName;
 
     @Schema(description = "Locale", example = "en")
+    @NotNull(message = "Locale cannot be null")
+    @Size(min = 2, max = 6, message = "Locale must be between 2 and 6 characters")
     private String locale;
 
     @Schema(description = "Is the locale preferred?", example = "true/false")
@@ -59,7 +65,7 @@ public class ConceptNameDto extends AuditTrail {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getConceptNameId(), getConceptId(), getConceptName(), getLocale(),
+        return Objects.hash(getConceptNameId(), getConceptId(), getConceptName(), getLocale(),
                 isLocalePreferred(), getConceptShortName(), getConceptDescription(), getCreatedAt(), getCreatedBy(),
                 getLastModifiedAt(), getLastModifiedBy(), getVoided(), getVoidedAt(), getVoidedBy(), getVoidReason());
     }

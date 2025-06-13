@@ -4,8 +4,10 @@ import com.alienworkspace.cdr.model.dto.person.PersonAttributeDto;
 import com.alienworkspace.cdr.model.dto.person.PersonDto;
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -38,14 +40,15 @@ public class PatientDto extends AuditTrail {
             description = "Patient Birth Date",
             example = "2020-12-31"
     )
-    private String birthDate;
+    @NotNull(message = "Birth Date is required")
+    private LocalDate birthDate;
 
     @Schema(
             name = "Patient Death Date",
             description = "Patient Death Date",
             example = "2020-12-31"
     )
-    private String deathDate;
+    private LocalDate deathDate;
 
     @Schema(
             name = "Patient Gender",
@@ -87,6 +90,7 @@ public class PatientDto extends AuditTrail {
             description = "Patient Identifier Dtos",
             example = "123456789"
     )
+    @Builder.Default
     private List<PatientIdentifierDto> patientIdentifierDtos = new ArrayList<>();
 
     @Schema(
@@ -94,6 +98,7 @@ public class PatientDto extends AuditTrail {
             description = "Patient Program Dtos",
             example = "123456789"
     )
+    @Builder.Default
     private List<PatientProgramDto> patientPrograms = new ArrayList<>();
 
     @Schema(
@@ -101,6 +106,7 @@ public class PatientDto extends AuditTrail {
             description = "Patient Attributes",
             example = "123456789"
     )
+    @Builder.Default
     private List<PersonAttributeDto> patientAttributes = new ArrayList<>();
 
     @Override
@@ -131,7 +137,7 @@ public class PatientDto extends AuditTrail {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getPatientId(), getAllergies(), getBirthDate(), getDeathDate(),
+        return Objects.hash(getPatientId(), getAllergies(), getBirthDate(), getDeathDate(),
                 getGender(), getPerson(), getIdentifier(), getIdentifierType(), getIdentifierTypeId(),
                 getPatientIdentifierDtos(), getPatientPrograms(), getPatientAttributes(), getCreatedAt(),
                 getCreatedBy(), getLastModifiedBy(), getLastModifiedAt(), getVoided(), getVoidedAt(), getVoidedBy(),

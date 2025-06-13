@@ -4,7 +4,6 @@ import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDate;
 import java.util.Objects;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -93,7 +92,7 @@ public class PatientProgramDto extends AuditTrail {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getPatientProgramId(), getPatientId(), getProgramId(), getLocationId(),
+        return Objects.hash(getPatientProgramId(), getPatientId(), getProgramId(), getLocationId(),
                 getDateEnrolled(), getDateCompleted(), getOutcomeConceptId(), getOutcomeComment(), getCreatedAt(),
                 getCreatedBy(), getLastModifiedAt(), getLastModifiedBy(), getVoided(), getVoidedAt(), getVoidedBy(),
                 getVoidReason());

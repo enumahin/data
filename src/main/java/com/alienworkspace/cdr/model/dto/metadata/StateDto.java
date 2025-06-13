@@ -1,11 +1,12 @@
 package com.alienworkspace.cdr.model.dto.metadata;
 
 import com.alienworkspace.cdr.model.helper.AuditTrail;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +23,8 @@ public class StateDto extends AuditTrail {
     private Integer stateId;
 
     @Schema(description = "State Name", example = "California")
+    @NotNull(message = "State Name cannot be null")
+    @Size(min = 2, max = 50, message = "State Name must be between 2 and 50 characters")
     private String stateName;
 
     @Schema(description = "State Locale", example = "en")
@@ -31,6 +34,8 @@ public class StateDto extends AuditTrail {
     private boolean localePreferred;
 
     @Schema(description = "State Code", example = "CA")
+    @NotNull(message = "State Code cannot be null")
+    @Size(min = 2, max = 20, message = "State Code must be between 2 and 20 characters")
     private String stateCode;
 
     @Schema(description = "State Geo Code", example = "US")
@@ -40,6 +45,7 @@ public class StateDto extends AuditTrail {
     private Integer statePhoneCode;
 
     @Schema(description = "Country")
+    @NotNull(message = "Country cannot be null")
     private CountryDto country;
 
     @Schema(description = "Communities")
@@ -72,7 +78,7 @@ public class StateDto extends AuditTrail {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getStateId(), getStateName(), getLocale(), isLocalePreferred(),
+        return Objects.hash(getStateId(), getStateName(), getLocale(), isLocalePreferred(),
                 getStateCode(), getStateGeoCode(), getStatePhoneCode(), getCountry(), getCounties(), getCreatedAt(),
                 getCreatedBy(), getLastModifiedAt(), getLastModifiedBy(), getVoided(), getVoidedAt(), getVoidedBy(),
                 getVoidReason());
