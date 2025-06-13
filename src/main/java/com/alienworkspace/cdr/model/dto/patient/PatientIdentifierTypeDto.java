@@ -2,15 +2,15 @@ package com.alienworkspace.cdr.model.dto.patient;
 
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.Objects;
 
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Schema(
         name = "PatientIdentifierType",
         description = "Patient Identifier Type"
@@ -64,4 +64,34 @@ public class PatientIdentifierTypeDto extends AuditTrail {
             example = "National ID Validator"
     )
     private String validator;
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        PatientIdentifierTypeDto that = (PatientIdentifierTypeDto) o;
+        return isRequired() == that.isRequired()
+                && isUnique() == that.isUnique()
+                && Objects.equals(getPatientIdentifierTypeId(), that.getPatientIdentifierTypeId())
+                && Objects.equals(getName(), that.getName())
+                && Objects.equals(getDescription(), that.getDescription())
+                && Objects.equals(getFormat(), that.getFormat())
+                && Objects.equals(getFormatHint(), that.getFormatHint())
+                && Objects.equals(getValidator(), that.getValidator())
+                && Objects.equals(getCreatedAt(), that.getCreatedAt())
+                && Objects.equals(getCreatedBy(), that.getCreatedBy())
+                && Objects.equals(getLastModifiedAt(), that.getLastModifiedAt())
+                && Objects.equals(getLastModifiedBy(), that.getLastModifiedBy())
+                && Objects.equals(getVoided(), that.getVoided())
+                && Objects.equals(getVoidedAt(), that.getVoidedAt())
+                && Objects.equals(getVoidedBy(), that.getVoidedBy())
+                && Objects.equals(getVoidReason(), that.getVoidReason());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getPatientIdentifierTypeId(), getName(), getDescription(), getFormat(),
+                isRequired(), isUnique(), getFormatHint(), getValidator(), getCreatedAt(), getCreatedBy(),
+                getLastModifiedAt(), getLastModifiedBy(), getVoided(), getVoidedAt(), getVoidedBy(), getVoidReason());
+    }
 }

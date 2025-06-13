@@ -4,16 +4,15 @@ import com.alienworkspace.cdr.model.dto.person.PersonAttributeDto;
 import com.alienworkspace.cdr.model.dto.person.PersonDto;
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Getter;
-import lombok.Builder;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Builder
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Schema(
@@ -104,4 +103,38 @@ public class PatientDto extends AuditTrail {
     )
     private List<PersonAttributeDto> patientAttributes = new ArrayList<>();
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        PatientDto that = (PatientDto) o;
+        return Objects.equals(getPatientId(), that.getPatientId())
+                && Objects.equals(getAllergies(), that.getAllergies())
+                && Objects.equals(getBirthDate(), that.getBirthDate())
+                && Objects.equals(getDeathDate(), that.getDeathDate())
+                && Objects.equals(getGender(), that.getGender())
+                && Objects.equals(getPerson(), that.getPerson())
+                && Objects.equals(getIdentifier(), that.getIdentifier())
+                && Objects.equals(getIdentifierType(), that.getIdentifierType())
+                && Objects.equals(getIdentifierTypeId(), that.getIdentifierTypeId())
+                && Objects.equals(getPatientIdentifierDtos(), that.getPatientIdentifierDtos())
+                && Objects.equals(getPatientPrograms(), that.getPatientPrograms())
+                && Objects.equals(getPatientAttributes(), that.getPatientAttributes())
+                && Objects.equals(getCreatedAt(), that.getCreatedAt())
+                && Objects.equals(getCreatedBy(), that.getCreatedBy())
+                && Objects.equals(getLastModifiedAt(), that.getLastModifiedAt())
+                && Objects.equals(getLastModifiedBy(), that.getLastModifiedBy())
+                && Objects.equals(getVoided(), that.getVoided())
+                && Objects.equals(getVoidedAt(), that.getVoidedAt())
+                && Objects.equals(getVoidedBy(), that.getVoidedBy())
+                && Objects.equals(getVoidReason(), that.getVoidReason());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getPatientId(), getAllergies(), getBirthDate(), getDeathDate(),
+                getGender(), getPerson(), getIdentifier(), getIdentifierType(), getIdentifierTypeId(),
+                getPatientIdentifierDtos(), getPatientPrograms(), getPatientAttributes(), getCreatedAt(),
+                getCreatedBy(), getLastModifiedBy(), getLastModifiedAt(), getVoided(), getVoidedAt(), getVoidedBy(),
+                getVoidReason());
+    }
 }

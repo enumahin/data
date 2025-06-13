@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.Objects;
+
 /**
  * Http response dto class.
  */
@@ -28,4 +30,16 @@ public class ResponseDto {
             description = "Response Message."
     )
     private String statusMessage;
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        ResponseDto that = (ResponseDto) o;
+        return getStatusCode() == that.getStatusCode() && Objects.equals(getStatusMessage(), that.getStatusMessage());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getStatusCode(), getStatusMessage());
+    }
 }

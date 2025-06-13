@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Schema(name = "CommunityDto", description = "Community Data Transfer Object")
@@ -49,4 +50,37 @@ public class CommunityDto extends AuditTrail {
     @Schema(description = "Locations")
     @Builder.Default
     private Set<LocationDto> locations = new HashSet<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        CommunityDto that = (CommunityDto) o;
+        return isLocalePreferred() == that.isLocalePreferred()
+                && Objects.equals(getCommunityId(), that.getCommunityId())
+                && Objects.equals(getCommunityName(), that.getCommunityName())
+                && Objects.equals(getLocale(), that.getLocale())
+                && Objects.equals(getCommunityCode(), that.getCommunityCode())
+                && Objects.equals(getCommunityGeoCode(), that.getCommunityGeoCode())
+                && Objects.equals(getCommunityPhoneCode(), that.getCommunityPhoneCode())
+                && Objects.equals(getState(), that.getState())
+                && Objects.equals(getCounty(), that.getCounty())
+                && Objects.equals(getCity(), that.getCity())
+                && Objects.equals(getLocations(), that.getLocations())
+                && Objects.equals(getCreatedAt(), that.getCreatedAt())
+                && Objects.equals(getCreatedBy(), that.getCreatedBy())
+                && Objects.equals(getLastModifiedAt(), that.getLastModifiedAt())
+                && Objects.equals(getLastModifiedBy(), that.getLastModifiedBy())
+                && Objects.equals(getVoided(), that.getVoided())
+                && Objects.equals(getVoidedAt(), that.getVoidedAt())
+                && Objects.equals(getVoidedBy(), that.getVoidedBy())
+                && Objects.equals(getVoidReason(), that.getVoidReason());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getCommunityId(), getCommunityName(), getLocale(), isLocalePreferred(),
+                getCommunityCode(), getCommunityGeoCode(), getCommunityPhoneCode(), getState(), getCounty(), getCity(),
+                getLocations());
+    }
 }

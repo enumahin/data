@@ -2,6 +2,7 @@ package com.alienworkspace.cdr.model.dto.metadata;
 
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -46,4 +47,37 @@ public class CityDto extends AuditTrail {
 
     @Schema(description = "Communities")
     private Set<CommunityDto> communities = new HashSet<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        CityDto cityDto = (CityDto) o;
+        return isLocalePreferred() == cityDto.isLocalePreferred()
+                && Objects.equals(getCityId(), cityDto.getCityId())
+                && Objects.equals(getCityName(), cityDto.getCityName())
+                && Objects.equals(getLocale(), cityDto.getLocale())
+                && Objects.equals(getCityCode(), cityDto.getCityCode())
+                && Objects.equals(getCityGeoCode(), cityDto.getCityGeoCode())
+                && Objects.equals(getCityPhoneCode(), cityDto.getCityPhoneCode())
+                && Objects.equals(getState(), cityDto.getState())
+                && Objects.equals(getCounty(), cityDto.getCounty())
+                && Objects.equals(getCommunities(), cityDto.getCommunities())
+                && Objects.equals(getCreatedAt(), cityDto.getCreatedAt())
+                && Objects.equals(getCreatedBy(), cityDto.getCreatedBy())
+                && Objects.equals(getLastModifiedAt(), cityDto.getLastModifiedAt())
+                && Objects.equals(getLastModifiedBy(), cityDto.getLastModifiedBy())
+                && Objects.equals(getVoided(), cityDto.getVoided())
+                && Objects.equals(getVoidedAt(), cityDto.getVoidedAt())
+                && Objects.equals(getVoidedBy(), cityDto.getVoidedBy())
+                && Objects.equals(getVoidReason(), cityDto.getVoidReason());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getCityId(), getCityName(), getLocale(), isLocalePreferred(),
+                getCityCode(), getCityGeoCode(), getCityPhoneCode(), getState(), getCounty(), getCommunities(),
+                getCreatedAt(), getCreatedBy(), getLastModifiedAt(), getLastModifiedBy(), getVoided(),
+                getVoidedAt(), getVoidedBy(), getVoidReason());
+    }
 }

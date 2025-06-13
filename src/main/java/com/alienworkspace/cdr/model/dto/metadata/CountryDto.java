@@ -2,6 +2,7 @@ package com.alienworkspace.cdr.model.dto.metadata;
 
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -53,4 +54,39 @@ public class CountryDto extends AuditTrail {
     @Builder.Default
     @Schema(description = "State List", example = "[]")
     private Set<StateDto> states = new HashSet<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        CountryDto that = (CountryDto) o;
+        return isLocalePreferred() == that.isLocalePreferred()
+                && Objects.equals(getCountryId(), that.getCountryId())
+                && Objects.equals(getCountryCode(), that.getCountryCode())
+                && Objects.equals(getCountryName(), that.getCountryName())
+                && Objects.equals(getCountryPhoneCode(), that.getCountryPhoneCode())
+                && Objects.equals(getCountryGeoCode(), that.getCountryGeoCode())
+                && Objects.equals(getLocale(), that.getLocale())
+                && Objects.equals(getCurrencyCode(), that.getCurrencyCode())
+                && Objects.equals(getCurrencySymbol(), that.getCurrencySymbol())
+                && Objects.equals(getCurrencyName(), that.getCurrencyName())
+                && Objects.equals(getCities(), that.getCities())
+                && Objects.equals(getStates(), that.getStates())
+                && Objects.equals(getCreatedAt(), that.getCreatedAt())
+                && Objects.equals(getCreatedBy(), that.getCreatedBy())
+                && Objects.equals(getLastModifiedAt(), that.getLastModifiedAt())
+                && Objects.equals(getLastModifiedBy(), that.getLastModifiedBy())
+                && Objects.equals(getVoided(), that.getVoided())
+                && Objects.equals(getVoidedAt(), that.getVoidedAt())
+                && Objects.equals(getVoidedBy(), that.getVoidedBy())
+                && Objects.equals(getVoidReason(), that.getVoidReason());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getCountryId(), getCountryCode(), getCountryName(), getCountryPhoneCode(),
+                getCountryGeoCode(), getLocale(), getCurrencyCode(), getCurrencySymbol(), getCurrencyName(),
+                isLocalePreferred(), getCities(), getStates(), getCreatedAt(), getCreatedBy(), getLastModifiedAt(),
+                getLastModifiedBy(), getVoided(), getVoidedAt(), getVoidedBy(), getVoidReason());
+    }
 }

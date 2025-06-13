@@ -4,6 +4,8 @@ import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
+import java.util.Objects;
+
 @Schema(
         name = "PersonAttributeType data transfer object.",
         description = "Data transfer object for a person's attribute type."
@@ -36,4 +38,30 @@ public class PersonAttributeTypeDto extends AuditTrail {
             example = "Number, Text, File, etc"
     )
     private String format;
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        PersonAttributeTypeDto that = (PersonAttributeTypeDto) o;
+        return Objects.equals(getPersonAttributeTypeId(), that.getPersonAttributeTypeId())
+                && Objects.equals(getName(), that.getName())
+                && Objects.equals(getDescription(), that.getDescription())
+                && Objects.equals(getFormat(), that.getFormat())
+                && Objects.equals(getCreatedAt(), that.getCreatedAt())
+                && Objects.equals(getCreatedBy(), that.getCreatedBy())
+                && Objects.equals(getLastModifiedAt(), that.getLastModifiedAt())
+                && Objects.equals(getLastModifiedBy(), that.getLastModifiedBy())
+                && Objects.equals(getVoided(), that.getVoided())
+                && Objects.equals(getVoidedAt(), that.getVoidedAt())
+                && Objects.equals(getVoidedBy(), that.getVoidedBy())
+                && Objects.equals(getVoidReason(), that.getVoidReason());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getPersonAttributeTypeId(), getName(), getDescription(), getFormat(),
+                getCreatedAt(), getCreatedBy(), getLastModifiedAt(), getLastModifiedBy(), getVoided(), getVoidedAt(),
+                getVoidedBy(), getVoidReason());
+    }
 }

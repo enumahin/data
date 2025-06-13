@@ -4,6 +4,8 @@ import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
+import java.util.Objects;
+
 @Schema(
         name = "PersonNameDto",
         description = "Person name data transfer object."
@@ -49,4 +51,33 @@ public class PersonNameDto extends AuditTrail {
             description = "Is this the preferred name?"
     )
     private Boolean preferred;
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        PersonNameDto that = (PersonNameDto) o;
+        return getPersonId() == that.getPersonId()
+                && Objects.equals(getPersonNameId(), that.getPersonNameId())
+                && Objects.equals(getFirstName(), that.getFirstName())
+                && Objects.equals(getMiddleName(), that.getMiddleName())
+                && Objects.equals(getLastName(), that.getLastName())
+                && Objects.equals(getOtherName(), that.getOtherName())
+                && Objects.equals(getPreferred(), that.getPreferred())
+                && Objects.equals(getCreatedAt(), that.getCreatedAt())
+                && Objects.equals(getCreatedBy(), that.getCreatedBy())
+                && Objects.equals(getLastModifiedAt(), that.getLastModifiedAt())
+                && Objects.equals(getLastModifiedBy(), that.getLastModifiedBy())
+                && Objects.equals(getVoided(), that.getVoided())
+                && Objects.equals(getVoidedAt(), that.getVoidedAt())
+                && Objects.equals(getVoidedBy(), that.getVoidedBy())
+                && Objects.equals(getVoidReason(), that.getVoidReason());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getPersonNameId(), getPersonId(), getFirstName(), getMiddleName(),
+                getLastName(), getOtherName(), getPreferred(), getCreatedAt(), getCreatedBy(), getLastModifiedAt(),
+                getLastModifiedBy(), getVoided(), getVoidedAt(), getVoidedBy(), getVoidReason());
+    }
 }

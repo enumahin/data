@@ -2,6 +2,7 @@ package com.alienworkspace.cdr.model.dto.metadata;
 
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -44,4 +45,36 @@ public class StateDto extends AuditTrail {
     @Schema(description = "Communities")
     @Builder.Default
     private Set<CountyDto> counties = new HashSet<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        StateDto stateDto = (StateDto) o;
+        return isLocalePreferred() == stateDto.isLocalePreferred()
+                && Objects.equals(getStateId(), stateDto.getStateId())
+                && Objects.equals(getStateName(), stateDto.getStateName())
+                && Objects.equals(getLocale(), stateDto.getLocale())
+                && Objects.equals(getStateCode(), stateDto.getStateCode())
+                && Objects.equals(getStateGeoCode(), stateDto.getStateGeoCode())
+                && Objects.equals(getStatePhoneCode(), stateDto.getStatePhoneCode())
+                && Objects.equals(getCountry(), stateDto.getCountry())
+                && Objects.equals(getCounties(), stateDto.getCounties())
+                && Objects.equals(getCreatedAt(), stateDto.getCreatedAt())
+                && Objects.equals(getCreatedBy(), stateDto.getCreatedBy())
+                && Objects.equals(getLastModifiedAt(), stateDto.getLastModifiedAt())
+                && Objects.equals(getLastModifiedBy(), stateDto.getLastModifiedBy())
+                && Objects.equals(getVoided(), stateDto.getVoided())
+                && Objects.equals(getVoidedAt(), stateDto.getVoidedAt())
+                && Objects.equals(getVoidedBy(), stateDto.getVoidedBy())
+                && Objects.equals(getVoidReason(), stateDto.getVoidReason());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getStateId(), getStateName(), getLocale(), isLocalePreferred(),
+                getStateCode(), getStateGeoCode(), getStatePhoneCode(), getCountry(), getCounties(), getCreatedAt(),
+                getCreatedBy(), getLastModifiedAt(), getLastModifiedBy(), getVoided(), getVoidedAt(), getVoidedBy(),
+                getVoidReason());
+    }
 }

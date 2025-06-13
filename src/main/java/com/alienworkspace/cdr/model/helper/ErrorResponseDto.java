@@ -1,6 +1,7 @@
 package com.alienworkspace.cdr.model.helper;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -40,4 +41,19 @@ public class ErrorResponseDto {
             description = "Time the Exception was raised"
     )
     private LocalDateTime errorTime;
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        ErrorResponseDto that = (ErrorResponseDto) o;
+        return getErrorCode() == that.getErrorCode()
+                && Objects.equals(getApiPath(), that.getApiPath())
+                && Objects.equals(getErrorMessage(), that.getErrorMessage())
+                && Objects.equals(getErrorTime(), that.getErrorTime());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getApiPath(), getErrorCode(), getErrorMessage(), getErrorTime());
+    }
 }

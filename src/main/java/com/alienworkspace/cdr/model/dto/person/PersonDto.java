@@ -13,6 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 @Data
@@ -84,4 +85,34 @@ public class PersonDto extends AuditTrail {
     @Builder.Default
     private List<PersonAttributeDto> attributes = new ArrayList<>();
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        PersonDto personDto = (PersonDto) o;
+        return Objects.equals(getPersonId(), personDto.getPersonId())
+                && Objects.equals(getGender(), personDto.getGender())
+                && Objects.equals(getBirthDate(), personDto.getBirthDate())
+                && Objects.equals(getDead(), personDto.getDead())
+                && Objects.equals(getDeathDate(), personDto.getDeathDate())
+                && Objects.equals(getCauseOfDeath(), personDto.getCauseOfDeath())
+                && Objects.equals(getName(), personDto.getName())
+                && Objects.equals(getAddress(), personDto.getAddress())
+                && Objects.equals(getAttributes(), personDto.getAttributes())
+                && Objects.equals(getCreatedAt(), personDto.getCreatedAt())
+                && Objects.equals(getCreatedBy(), personDto.getCreatedBy())
+                && Objects.equals(getLastModifiedAt(), personDto.getLastModifiedAt())
+                && Objects.equals(getLastModifiedBy(), personDto.getLastModifiedBy())
+                && Objects.equals(getVoided(), personDto.getVoided())
+                && Objects.equals(getVoidedAt(), personDto.getVoidedAt())
+                && Objects.equals(getVoidedBy(), personDto.getVoidedBy())
+                && Objects.equals(getVoidReason(), personDto.getVoidReason());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getPersonId(), getGender(), getBirthDate(), getDead(), getDeathDate(),
+                getCauseOfDeath(), getName(), getAddress(), getAttributes(), getCreatedAt(), getCreatedBy(),
+                getLastModifiedAt(), getLastModifiedBy(), getVoided(), getVoidedAt(), getVoidedBy(), getVoidReason());
+    }
 }

@@ -4,6 +4,8 @@ import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
+import java.util.Objects;
+
 @Schema(name = "ConceptNameDto", description = "Concept Name Data Transfer Object")
 @AllArgsConstructor
 @Builder
@@ -32,4 +34,33 @@ public class ConceptNameDto extends AuditTrail {
 
     @Schema(description = "Concept Description", example = "English")
     private String conceptDescription;
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        ConceptNameDto that = (ConceptNameDto) o;
+        return isLocalePreferred() == that.isLocalePreferred()
+                && Objects.equals(getConceptNameId(), that.getConceptNameId())
+                && Objects.equals(getConceptId(), that.getConceptId())
+                && Objects.equals(getConceptName(), that.getConceptName())
+                && Objects.equals(getLocale(), that.getLocale())
+                && Objects.equals(getConceptShortName(), that.getConceptShortName())
+                && Objects.equals(getConceptDescription(), that.getConceptDescription())
+                && Objects.equals(getCreatedAt(), that.getCreatedAt())
+                && Objects.equals(getCreatedBy(), that.getCreatedBy())
+                && Objects.equals(getLastModifiedAt(), that.getLastModifiedAt())
+                && Objects.equals(getLastModifiedBy(), that.getLastModifiedBy())
+                && Objects.equals(getVoided(), that.getVoided())
+                && Objects.equals(getVoidedAt(), that.getVoidedAt())
+                && Objects.equals(getVoidedBy(), that.getVoidedBy())
+                && Objects.equals(getVoidReason(), that.getVoidReason());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getConceptNameId(), getConceptId(), getConceptName(), getLocale(),
+                isLocalePreferred(), getConceptShortName(), getConceptDescription(), getCreatedAt(), getCreatedBy(),
+                getLastModifiedAt(), getLastModifiedBy(), getVoided(), getVoidedAt(), getVoidedBy(), getVoidReason());
+    }
 }

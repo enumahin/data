@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Builder
 @Getter
@@ -108,4 +109,45 @@ public class PersonAddressDto extends AuditTrail {
             example = "2020-10-12"
     )
     private LocalDate endDate;
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        PersonAddressDto that = (PersonAddressDto) o;
+        return getPersonId() == that.getPersonId()
+                && isPreferred() == that.isPreferred()
+                && getLongitude() == that.getLongitude()
+                && getLatitude() == that.getLatitude()
+                && Objects.equals(getPersonAddressId(), that.getPersonAddressId())
+                && Objects.equals(getCountry(), that.getCountry())
+                && Objects.equals(getState(), that.getState())
+                && Objects.equals(getCounty(), that.getCounty())
+                && Objects.equals(getCity(), that.getCity())
+                && Objects.equals(getCommunity(), that.getCommunity())
+                && Objects.equals(getPostalCode(), that.getPostalCode())
+                && Objects.equals(getAddressLine1(), that.getAddressLine1())
+                && Objects.equals(getAddressLine2(), that.getAddressLine2())
+                && Objects.equals(getAddressLine3(), that.getAddressLine3())
+                && Objects.equals(getLandmark(), that.getLandmark())
+                && Objects.equals(getStartDate(), that.getStartDate())
+                && Objects.equals(getEndDate(), that.getEndDate())
+                && Objects.equals(getCreatedAt(), that.getCreatedAt())
+                && Objects.equals(getCreatedBy(), that.getCreatedBy())
+                && Objects.equals(getLastModifiedAt(), that.getLastModifiedAt())
+                && Objects.equals(getLastModifiedBy(), that.getLastModifiedBy())
+                && Objects.equals(getVoided(), that.getVoided())
+                && Objects.equals(getVoidedAt(), that.getVoidedAt())
+                && Objects.equals(getVoidedBy(), that.getVoidedBy())
+                && Objects.equals(getVoidReason(), that.getVoidReason());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getPersonAddressId(), getPersonId(), isPreferred(), getCountry(),
+                getState(), getCounty(), getCity(), getCommunity(), getPostalCode(), getAddressLine1(),
+                getAddressLine2(), getAddressLine3(), getLandmark(), getLongitude(), getLatitude(), getStartDate(),
+                getEndDate(), getCreatedAt(), getCreatedBy(), getLastModifiedAt(), getLastModifiedBy(), getVoided(),
+                getVoidedAt(), getVoidedBy(), getVoidReason());
+    }
 }
