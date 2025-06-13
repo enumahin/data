@@ -31,5 +31,9 @@ public class ProgramDto extends AuditTrail {
     )
     private String description;
 
+    @Schema(
+            description = "Is the program active?",
+            example = "true/false"
+    )
     private boolean active = true;
 }

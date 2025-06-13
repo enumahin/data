@@ -23,6 +23,11 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PersonDto extends AuditTrail {
 
+    @Schema(
+            description = "Person Id",
+            example = "1"
+    )
+    @NotNull(message = "Person ID is required.")
     private Long personId;
 
     @Schema(
@@ -58,12 +63,24 @@ public class PersonDto extends AuditTrail {
     )
     private String causeOfDeath;
 
+    @Schema(
+            description = "Is the person married?",
+            example = "true/false"
+    )
     @Builder.Default
     private List<PersonNameDto> name = new ArrayList<>();
 
+    @Schema(
+            description = "Is the person married?",
+            example = "true/false"
+    )
     @Builder.Default
     private List<PersonAddressDto> address = new ArrayList<>();
 
+    @Schema(
+            description = "Is the person married?",
+            example = "true/false"
+    )
     @Builder.Default
     private List<PersonAttributeDto> attributes = new ArrayList<>();
 

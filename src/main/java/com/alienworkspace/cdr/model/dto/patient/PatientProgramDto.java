@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Schema(
         name = "PatientProgram",
-    description = "Patient Program"
+        description = "Patient Program"
 )
 public class PatientProgramDto {
 

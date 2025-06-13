@@ -3,22 +3,45 @@ package com.alienworkspace.cdr.model.dto.metadata;
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import java.util.HashSet;
 import java.util.Set;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Schema(name = "CountyDto", description = "County Data Transfer Object")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
 public class CountyDto extends AuditTrail {
+
+    @Schema(description = "County Id", example = "1")
     private Integer countyId;
+
+    @Schema(description = "County Name", example = "Santa Clara")
     private String countyName;
+
+    @Schema(description = "County Locale", example = "en")
     private String locale;
+
+    @Schema(description = "Is the county preferred?", example = "true/false")
     private boolean localePreferred;
+
+    @Schema(description = "County Code", example = "CA")
     private String countyCode;
+
+    @Schema(description = "County Geo Code", example = "CA")
     private String countyGeoCode;
+
+    @Schema(description = "County Phone Code", example = "1")
     private Integer countyPhoneCode;
+
+    @Schema(description = "State")
+    private StateDto state;
+
+    @Schema(description = "Cities", example = "[]")
+    @Builder.Default
     private Set<CityDto> cities = new HashSet<>();
 }

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Schema(
         name = "PatientIdentifierType",
-    description = "Patient Identifier Type"
+        description = "Patient Identifier Type"
 )
 public class PatientIdentifierTypeDto extends AuditTrail {
 

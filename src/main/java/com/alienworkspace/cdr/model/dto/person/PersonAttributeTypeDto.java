@@ -14,6 +14,10 @@ import lombok.*;
 @NoArgsConstructor
 public class PersonAttributeTypeDto extends AuditTrail {
 
+    @Schema(
+            description = "Attribute type Id",
+            example = "1"
+    )
     private Integer personAttributeTypeId;
 
     @Schema(

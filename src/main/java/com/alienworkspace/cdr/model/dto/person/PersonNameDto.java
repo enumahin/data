@@ -15,8 +15,14 @@ import lombok.*;
 @NoArgsConstructor
 public class PersonNameDto extends AuditTrail {
 
+    @Schema(
+            description = "Person Name Id"
+    )
     private Long personNameId;
 
+    @Schema(
+            description = "Person Id"
+    )
     private long personId;
 
     @Schema(

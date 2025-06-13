@@ -20,6 +20,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PersonAttributeDto extends AuditTrail {
 
+    @Schema(
+            description = "The person's Attribute Id"
+    )
+    @NotNull(message = "Person's Attribute ID must be provided.")
     private Long personAttributeId;
 
     @Schema(
@@ -40,5 +44,9 @@ public class PersonAttributeDto extends AuditTrail {
     @NotNull(message = "Attribute value must be provided.")
     private String value;
 
+    @Schema(
+            description = "Is this the preferred attribute?"
+    )
+    @NotNull(message = "Is this the preferred attribute?")
     private boolean preferred;
 }
