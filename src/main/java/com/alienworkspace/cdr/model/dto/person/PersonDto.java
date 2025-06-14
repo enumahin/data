@@ -28,7 +28,6 @@ public class PersonDto extends AuditTrail {
             description = "Person Id",
             example = "1"
     )
-    @NotNull(message = "Person ID is required.")
     private Long personId;
 
     @Schema(
