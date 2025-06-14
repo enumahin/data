@@ -1,16 +1,11 @@
 package com.alienworkspace.cdr.model.dto.patient;
 
-import com.alienworkspace.cdr.model.dto.person.PersonAttributeDto;
 import com.alienworkspace.cdr.model.dto.person.PersonDto;
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Getter
 @Builder
@@ -36,62 +31,12 @@ public class PatientDto extends AuditTrail {
     private String allergies;
 
     @Schema(
-            name = "Patient Birth Date",
-            description = "Patient Birth Date",
-            example = "2020-12-31"
-    )
-    @NotNull(message = "Birth Date is required")
-    private LocalDate birthDate;
-
-    @Schema(
-            name = "Patient Death Date",
-            description = "Patient Death Date",
-            example = "2020-12-31"
-    )
-    private LocalDate deathDate;
-
-    @Schema(
-            name = "Patient Gender",
-            description = "Patient Gender",
-            example = "M=Male and F=Female"
-    )
-    private String gender;
-
-    @Schema(
-            name = "Patient Person",
-            description = "Patient Person",
-            example = "123456789"
-    )
-    private PersonDto person;
-
-    @Schema(
-            name = "Patient Identifier",
-            description = "Patient Identifier",
-            example = "123456789"
-    )
-    private String identifier;
-
-    @Schema(
-            name = "Patient Identifier Type",
-            description = "Patient Identifier Type",
-            example = "National ID"
-    )
-    private String identifierType;
-
-    @Schema(
-            name = "Patient Identifier Type Id",
-            description = "Patient Identifier Type Id",
-            example = "1"
-    )
-    private Integer identifierTypeId;
-
-    @Schema(
             name = "Patient Identifier Dtos",
             description = "Patient Identifier Dtos",
             example = "123456789"
     )
     @Builder.Default
-    private List<PatientIdentifierDto> patientIdentifierDtos = new ArrayList<>();
+    private List<PatientIdentifierDto> patientIdentifiers = new ArrayList<>();
 
     @Schema(
             name = "Patient Program Dtos",
@@ -102,12 +47,11 @@ public class PatientDto extends AuditTrail {
     private List<PatientProgramDto> patientPrograms = new ArrayList<>();
 
     @Schema(
-            name = "Patient Attributes",
-            description = "Patient Attributes",
+            name = "Patient Person",
+            description = "Patient Person",
             example = "123456789"
     )
-    @Builder.Default
-    private List<PersonAttributeDto> patientAttributes = new ArrayList<>();
+    private PersonDto person;
 
     @Override
     public boolean equals(Object o) {
@@ -115,16 +59,9 @@ public class PatientDto extends AuditTrail {
         PatientDto that = (PatientDto) o;
         return Objects.equals(getPatientId(), that.getPatientId())
                 && Objects.equals(getAllergies(), that.getAllergies())
-                && Objects.equals(getBirthDate(), that.getBirthDate())
-                && Objects.equals(getDeathDate(), that.getDeathDate())
-                && Objects.equals(getGender(), that.getGender())
                 && Objects.equals(getPerson(), that.getPerson())
-                && Objects.equals(getIdentifier(), that.getIdentifier())
-                && Objects.equals(getIdentifierType(), that.getIdentifierType())
-                && Objects.equals(getIdentifierTypeId(), that.getIdentifierTypeId())
-                && Objects.equals(getPatientIdentifierDtos(), that.getPatientIdentifierDtos())
+                && Objects.equals(getPatientIdentifiers(), that.getPatientIdentifiers())
                 && Objects.equals(getPatientPrograms(), that.getPatientPrograms())
-                && Objects.equals(getPatientAttributes(), that.getPatientAttributes())
                 && Objects.equals(getCreatedAt(), that.getCreatedAt())
                 && Objects.equals(getCreatedBy(), that.getCreatedBy())
                 && Objects.equals(getLastModifiedAt(), that.getLastModifiedAt())
@@ -137,9 +74,8 @@ public class PatientDto extends AuditTrail {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPatientId(), getAllergies(), getBirthDate(), getDeathDate(),
-                getGender(), getPerson(), getIdentifier(), getIdentifierType(), getIdentifierTypeId(),
-                getPatientIdentifierDtos(), getPatientPrograms(), getPatientAttributes(), getCreatedAt(),
+        return Objects.hash(getPatientId(), getAllergies(), getPatientIdentifiers(), getPatientPrograms(),
+                getPerson(), getCreatedAt(),
                 getCreatedBy(), getLastModifiedBy(), getLastModifiedAt(), getVoided(), getVoidedAt(), getVoidedBy(),
                 getVoidReason());
     }

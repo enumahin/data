@@ -69,6 +69,7 @@ public class PersonDto extends AuditTrail {
             example = "true/false"
     )
     @Builder.Default
+    @NotNull(message = "Person Name is required")
     private List<PersonNameDto> name = new ArrayList<>();
 
     @Schema(
@@ -76,6 +77,7 @@ public class PersonDto extends AuditTrail {
             example = "true/false"
     )
     @Builder.Default
+    @NotNull(message = "Person Address is required")
     private List<PersonAddressDto> address = new ArrayList<>();
 
     @Schema(
@@ -83,6 +85,7 @@ public class PersonDto extends AuditTrail {
             example = "true/false"
     )
     @Builder.Default
+    @NotNull(message = "Person Attributes is required")
     private List<PersonAttributeDto> attributes = new ArrayList<>();
 
     @Override
