@@ -11,9 +11,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 
 @Data
@@ -69,7 +67,7 @@ public class PersonDto extends AuditTrail {
     )
     @Builder.Default
     @NotNull(message = "Person Name is required")
-    private List<PersonNameDto> name = new ArrayList<>();
+    private Set<PersonNameDto> name = new HashSet<>();
 
     @Schema(
             description = "Is the person married?",
@@ -77,7 +75,7 @@ public class PersonDto extends AuditTrail {
     )
     @Builder.Default
     @NotNull(message = "Person Address is required")
-    private List<PersonAddressDto> address = new ArrayList<>();
+    private Set<PersonAddressDto> address = new HashSet<>();
 
     @Schema(
             description = "Is the person married?",
@@ -85,7 +83,7 @@ public class PersonDto extends AuditTrail {
     )
     @Builder.Default
     @NotNull(message = "Person Attributes is required")
-    private List<PersonAttributeDto> attributes = new ArrayList<>();
+    private Set<PersonAttributeDto> attributes = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {

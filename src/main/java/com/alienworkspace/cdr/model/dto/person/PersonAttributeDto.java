@@ -25,7 +25,6 @@ public class PersonAttributeDto extends AuditTrail {
     @Schema(
             description = "The person's Attribute Id"
     )
-    @NotNull(message = "Person's Attribute ID must be provided.")
     private Long personAttributeId;
 
     @Schema(
