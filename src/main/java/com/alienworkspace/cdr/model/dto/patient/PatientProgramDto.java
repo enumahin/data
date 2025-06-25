@@ -4,6 +4,9 @@ import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDate;
 import java.util.Objects;
+
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,24 +32,28 @@ public class PatientProgramDto extends AuditTrail {
             description = "Patient Id",
             example = "1"
     )
+    @Min(value = 1, message = "Patient ID must be greater than 0.")
     private long patientId;
 
     @Schema(
             description = "Program Id",
             example = "1"
     )
-    private Integer programId;
+    @Min(value = 1, message = "Program ID must be greater than 0.")
+    private int programId;
 
     @Schema(
             description = "Location Id",
             example = "1"
     )
-    private Integer locationId;
+    @Min(value = 1, message = "Location ID must be greater than 0.")
+    private int locationId;
 
     @Schema(
             description = "Date Enrolled",
             example = "2020-12-31"
     )
+    @NotNull(message = "Date Enrolled is required")
     private LocalDate dateEnrolled;
 
     @Schema(

@@ -2,6 +2,7 @@ package com.alienworkspace.cdr.model.dto.patient;
 
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.Objects;
@@ -27,6 +28,7 @@ public class PatientIdentifierTypeDto extends AuditTrail {
             description = "Patient Identifier Type Name",
             example = "National ID"
     )
+    @Size(min = 3, max = 100, message = "Name must be between 3 and 100 characters")
     private String name;
 
     @Schema(

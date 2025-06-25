@@ -2,6 +2,8 @@ package com.alienworkspace.cdr.model.dto.patient;
 
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.Objects;
@@ -21,31 +23,41 @@ public class PatientIdentifierDto extends AuditTrail {
             example = "1"
     )
     private Long patientIdentifierId;
+
     @Schema(
             description = "Patient Id",
             example = "1"
     )
+    @Min(message = "Patient Id must be greater than 0", value = 1)
     private long patientId;
+
     @Schema(
             description = "Patient Identifier Type Id",
             example = "1"
     )
+    @Min(message = "Patient Identifier Type Id must be greater than 0", value = 1)
     private int identifierTypeId;
+
     @Schema(
             description = "Patient Identifier",
             example = "123456789"
     )
+    @Size(min = 1, max = 100, message = "Identifier must be between 3 and 100 characters")
     private String identifier;
+
     @Schema(
             description = "Is this the preferred identifier?",
             example = "true"
     )
+    @Builder.Default
     private boolean preferred = true;
+
     @Schema(
             description = "Location Id",
             example = "1"
     )
-    private Integer locationId;
+    @Min(message = "Location Id must be greater than 0", value = 1)
+    private int locationId;
 
     @Override
     public boolean equals(Object o) {

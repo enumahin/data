@@ -3,6 +3,7 @@ package com.alienworkspace.cdr.model.dto.patient;
 import com.alienworkspace.cdr.model.dto.person.PersonDto;
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.*;
@@ -36,7 +37,7 @@ public class PatientDto extends AuditTrail {
             example = "123456789"
     )
     @Builder.Default
-    private List<PatientIdentifierDto> patientIdentifiers = new ArrayList<>();
+    private Set<PatientIdentifierDto> patientIdentifiers = new HashSet<>();
 
     @Schema(
             name = "Patient Program Dtos",
@@ -44,13 +45,14 @@ public class PatientDto extends AuditTrail {
             example = "123456789"
     )
     @Builder.Default
-    private List<PatientProgramDto> patientPrograms = new ArrayList<>();
+    private Set<PatientProgramDto> patientPrograms = new HashSet<>();
 
     @Schema(
             name = "Patient Person",
             description = "Patient Person",
             example = "123456789"
     )
+    @NotNull(message = "Person cannot be null")
     private PersonDto person;
 
     @Override
