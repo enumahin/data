@@ -30,8 +30,7 @@ public class PersonAttributeDto extends AuditTrail {
     @Schema(
             description = "The person's Id"
     )
-    @NotNull(message = "Person's ID must be provided.")
-    private long personId;
+    private Long personId;
 
     @Schema(
             description = "The Attribute's Id"
@@ -48,7 +47,6 @@ public class PersonAttributeDto extends AuditTrail {
     @Schema(
             description = "Is this the preferred attribute?"
     )
-    @NotNull(message = "Is this the preferred attribute?")
     private boolean preferred;
 
     @Override
