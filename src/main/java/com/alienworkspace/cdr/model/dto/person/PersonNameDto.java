@@ -2,6 +2,7 @@ package com.alienworkspace.cdr.model.dto.person;
 
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.Objects;
@@ -30,6 +31,7 @@ public class PersonNameDto extends AuditTrail {
     @Schema(
             description = "First/Given Name"
     )
+    @Size(min = 3, max = 100, message = "First name must be between 3 and 100 characters")
     private String firstName;
 
     @Schema(
@@ -40,6 +42,7 @@ public class PersonNameDto extends AuditTrail {
     @Schema(
             description = "Last/Family Name"
     )
+    @Size(min = 3, max = 100, message = "Last name must be between 3 and 100 characters")
     private String lastName;
 
     @Schema(

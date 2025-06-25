@@ -2,6 +2,7 @@ package com.alienworkspace.cdr.model.dto.person;
 
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.Objects;
@@ -26,6 +27,7 @@ public class PersonAttributeTypeDto extends AuditTrail {
             description = "Attribute name",
             example = "Marital Status, Phone Number, etc"
     )
+    @Size(min = 3, max = 100, message = "Name must be between 3 and 100 characters")
     private String name;
 
     @Schema(

@@ -31,7 +31,7 @@ public class PersonAttributeDto extends AuditTrail {
             description = "The person's Id"
     )
     @NotNull(message = "Person's ID must be provided.")
-    private long person_id;
+    private long personId;
 
     @Schema(
             description = "The Attribute's Id"
@@ -56,7 +56,7 @@ public class PersonAttributeDto extends AuditTrail {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         PersonAttributeDto that = (PersonAttributeDto) o;
-        return getPerson_id() == that.getPerson_id()
+        return getPersonId() == that.getPersonId()
                 && isPreferred() == that.isPreferred()
                 && Objects.equals(getPersonAttributeId(), that.getPersonAttributeId())
                 && Objects.equals(getPersonAttributeType(), that.getPersonAttributeType())
@@ -73,7 +73,7 @@ public class PersonAttributeDto extends AuditTrail {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPersonAttributeId(), getPerson_id(), getPersonAttributeType(),
+        return Objects.hash(getPersonAttributeId(), getPersonId(), getPersonAttributeType(),
                 getValue(), isPreferred(), getCreatedAt(), getCreatedBy(), getLastModifiedAt(), getLastModifiedBy(),
                 getVoided(), getVoidedAt(), getVoidedBy(), getVoidReason());
     }
