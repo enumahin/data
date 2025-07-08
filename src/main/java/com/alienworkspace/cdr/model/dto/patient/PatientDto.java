@@ -3,6 +3,7 @@ package com.alienworkspace.cdr.model.dto.patient;
 import com.alienworkspace.cdr.model.dto.metadata.FacilityDto;
 import com.alienworkspace.cdr.model.dto.metadata.LocationDto;
 import com.alienworkspace.cdr.model.dto.person.PersonDto;
+import com.alienworkspace.cdr.model.dto.visit.VisitDto;
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
@@ -69,6 +70,14 @@ public class PatientDto extends AuditTrail {
             example = "Maternity Ward"
     )
     private LocationDto location;
+
+    @Schema(
+            name = "Patient Visits",
+            description = "Patient Visits",
+            example = "123456789"
+    )
+    @Builder.Default
+    private Set<VisitDto> visitDtos = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {

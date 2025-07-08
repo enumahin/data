@@ -23,6 +23,12 @@ import java.util.Objects;
 @Builder
 public class ObsGroupDto extends AuditTrail {
 
+    @Schema(description = "Observation Group Id", example = "123e4567-e89b-12d3-a456-426655440000")
+    private String id;
+
+    @Schema(description = "Observation Group Numeric Id for temporal use", example = "143")
+    private Long numericId;
+
     @Schema(description = "Concept Id", name = "conceptId")
     private long conceptId;
 

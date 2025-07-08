@@ -29,6 +29,9 @@ public class VisitDto extends AuditTrail {
     @Schema(description = "Visit UUID", example = "123e4567-e89b-12d3-a456-426655440000")
     private String id;
 
+    @Schema(description = "Visit Numeric Id for temporal use", example = "143")
+    private Long numericId;
+
     @Schema(description = "Patient UUID", example = "123e4567-e89b-12d3-a456-426655440000")
     private String patientId;
 
