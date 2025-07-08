@@ -1,6 +1,5 @@
 package com.alienworkspace.cdr.model.dto.metadata;
 
-import com.alienworkspace.cdr.model.dto.patient.PatientDto;
 import lombok.*;
 
 import java.util.Objects;
@@ -10,15 +9,21 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AsyncIngestionPayload extends IngestionPayload {
-    private PatientDto patient;
+public class IngestionPayload {
+    private Integer countryId;
+    private Integer stateId;
+    private Integer countyId;
+    private Integer cityId;
+    private Integer communityId;
+    private Integer facilityId;
+    private String facilityUUID;
+    private String facilityDatimCode;
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        AsyncIngestionPayload that = (AsyncIngestionPayload) o;
-        return Objects.equals(patient, that.patient) && Objects.equals(getCountryId(), that.getCountryId())
-                && Objects.equals(getStateId(), that.getStateId())
+        IngestionPayload that = (IngestionPayload) o;
+        return Objects.equals(getCountryId(), that.getCountryId()) && Objects.equals(getStateId(), that.getStateId())
                 && Objects.equals(getCountyId(), that.getCountyId()) && Objects.equals(getCityId(), that.getCityId())
                 && Objects.equals(getCommunityId(), that.getCommunityId())
                 && Objects.equals(getFacilityId(), that.getFacilityId())
@@ -28,7 +33,7 @@ public class AsyncIngestionPayload extends IngestionPayload {
 
     @Override
     public int hashCode() {
-        return Objects.hash(patient, getCountryId(), getStateId(), getCountyId(), getCityId(), getCommunityId(),
-                getFacilityId(), getFacilityUUID(), getFacilityDatimCode());
+        return Objects.hash(getCountryId(), getStateId(), getCountyId(), getCityId(), getCommunityId(), getFacilityId(),
+                getFacilityUUID(), getFacilityDatimCode());
     }
 }

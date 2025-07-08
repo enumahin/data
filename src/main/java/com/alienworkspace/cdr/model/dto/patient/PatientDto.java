@@ -1,5 +1,7 @@
 package com.alienworkspace.cdr.model.dto.patient;
 
+import com.alienworkspace.cdr.model.dto.metadata.FacilityDto;
+import com.alienworkspace.cdr.model.dto.metadata.LocationDto;
 import com.alienworkspace.cdr.model.dto.person.PersonDto;
 import com.alienworkspace.cdr.model.helper.AuditTrail;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -14,8 +16,7 @@ import java.util.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Schema(
-    name = "Patient Dto",
-        description = "Patient Dto for patient entity"
+    name = "Patient Dto", description = "Patient Dto for patient entity"
 )
 public class PatientDto extends AuditTrail {
 
@@ -54,6 +55,20 @@ public class PatientDto extends AuditTrail {
     )
     @NotNull(message = "Person cannot be null")
     private PersonDto person;
+
+    @Schema(
+            name = "Patient Facility",
+            description = "Patient Facility",
+            example = "General Hospital"
+    )
+    private FacilityDto facility;
+
+    @Schema(
+            name = "Patient Location",
+            description = "Patient's Care Entry Point",
+            example = "Maternity Ward"
+    )
+    private LocationDto location;
 
     @Override
     public boolean equals(Object o) {
