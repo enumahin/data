@@ -24,6 +24,9 @@ import java.util.Set;
 @Builder
 public class ObsDto extends AuditTrail {
 
+    @Schema(description = "Observation Numeric Id for temporal use", example = "143")
+    private long numericId;
+
     @Schema(description = "Observation UUID", example = "123e4567-e89b-12d3-a456-426655440000")
     private String id;
 

@@ -54,6 +54,9 @@ public class FacilityDto extends AuditTrail {
     @Schema(description = "Facility Longitude")
     private Double longitude;
 
+    @Schema(description = "Facility Community")
+    private CommunityDto community;
+
     @Schema(description = "Facility Care Entry Points")
     private Set<LocationDto> locations = new HashSet<>();
 
