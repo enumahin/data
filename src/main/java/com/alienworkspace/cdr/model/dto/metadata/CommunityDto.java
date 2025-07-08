@@ -48,9 +48,9 @@ public class CommunityDto extends AuditTrail {
     @NotNull(message = "City cannot be null")
     private CityDto city;
 
-    @Schema(description = "Locations")
+    @Schema(description = "Facilities")
     @Builder.Default
-    private Set<LocationDto> locations = new HashSet<>();
+    private Set<FacilityDto> facilities = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
@@ -65,7 +65,7 @@ public class CommunityDto extends AuditTrail {
                 && Objects.equals(getCommunityGeoCode(), that.getCommunityGeoCode())
                 && Objects.equals(getCommunityPhoneCode(), that.getCommunityPhoneCode())
                 && Objects.equals(getCity(), that.getCity())
-                && Objects.equals(getLocations(), that.getLocations())
+                && Objects.equals(getFacilities(), that.getFacilities())
                 && Objects.equals(getCreatedAt(), that.getCreatedAt())
                 && Objects.equals(getCreatedBy(), that.getCreatedBy())
                 && Objects.equals(getLastModifiedAt(), that.getLastModifiedAt())
@@ -80,6 +80,6 @@ public class CommunityDto extends AuditTrail {
     public int hashCode() {
         return Objects.hash(getCommunityId(), getCommunityName(), getLocale(), isLocalePreferred(),
                 getCommunityCode(), getCommunityGeoCode(), getCommunityPhoneCode(), getCity(),
-                getLocations());
+                getFacilities());
     }
 }
