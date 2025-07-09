@@ -6,6 +6,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
@@ -19,6 +21,7 @@ import java.util.Set;
 @Schema(description = "Patient Encounter", name = "EncounterDto")
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class EncounterDto  extends AuditTrail {
 
